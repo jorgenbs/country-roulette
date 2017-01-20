@@ -1,0 +1,14 @@
+{
+  "name": "country-roulette",
+  "version": "1.0.0",
+  "description": "pop a country from the list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jorgenbs@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "args": "^2.2.4"
+  }
+}
