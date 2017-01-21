@@ -1,28 +1,21 @@
+const express = require('express')
 const args = require('args')
-const fs = require('fs')
 
-const countries = require('./countries')
-args.option('init', 'make roulette wheel')
-const flags = args.parse(process.argv)
+const roulette = require('./roulette')
+const server = express()
 
-if (flags.init) {
-  fs.writeFile('wheel.json', JSON.stringify(countries))
-  fs.writeFile('winners.json', '[]')
-} else {
-  let wheel = require('./wheel')
-  let winners = require('./winners')
+server.get('*', (req, res) => {
+  const winner = roulette()
+  
+  if (winner === null) {
+    res.write('Ran out of countries')
+  } else {
+    res.write(JSON.stringify(winner))
+  }
+  res.end()
+})
 
-  if (wheel.length === 0) return
-
-  // :O :O :O
-  const winner = wheel.splice(Math.floor(Math.random()*wheel.length), 1)[0]
-  winners.push(winner)
-
-  // output
-  console.log(`${wheel.length}/${countries.length}`)
-  console.log(winner)
-
-  // save
-  fs.writeFile('wheel.json', JSON.stringify(wheel))
-  fs.writeFile('winners.json', JSON.stringify(winners))
-}
+server.listen('8080', (error) => {
+  if (error) throw error
+  console.log('Server is running at localhost:5000')
+})

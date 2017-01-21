@@ -1,14 +1,16 @@
 {
   "name": "country-roulette",
   "version": "1.0.0",
-  "description": "pop a country from the list",
+  "description": "draws and removes random country from a list.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "jorgenbs@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "args": "^2.2.4"
+    "args": "^2.2.4",
+    "express": "^4.14.0"
   }
 }
