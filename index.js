@@ -3,6 +3,7 @@ const args = require('args')
 
 const roulette = require('./roulette')
 const server = express()
+const port = process.env.PORT || 8080
 
 server.get('*', (req, res) => {
   const winner = roulette()
@@ -15,7 +16,7 @@ server.get('*', (req, res) => {
   res.end()
 })
 
-server.listen('8080', (error) => {
+server.listen(port, (error) => {
   if (error) throw error
-  console.log('Server is running at localhost:5000')
+  console.log(`Server is listening at ${port}`)
 })
