@@ -12,7 +12,7 @@ if (flags.init) {
   console.log('fresh restart')
 }
 
-module.exports = () => {
+const draw = () => {
   let wheel = require('./wheel')
   let winners = require('./winners')
 
@@ -26,12 +26,17 @@ module.exports = () => {
   winners.push(winner)
 
   // output
+  console.log(`Winner: ${winner.name.common}`)
+  console.log(`Winners: ${winners.length}`)
   console.log(`Countries remaining: ${wheel.length}/${countries.length}`)
-  console.log(winner)
 
   // save
   fs.writeFile('wheel.json', JSON.stringify(wheel))
   fs.writeFile('winners.json', JSON.stringify(winners))
 
-  return winner
+  return {winner, winners}
+}
+
+module.exports = {
+  draw,
 }
