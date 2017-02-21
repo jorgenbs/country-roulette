@@ -7,6 +7,7 @@ args.option('init', 'make roulette wheel')
 const flags = args.parse(process.argv)
 
 if (flags.init) {
+  // create initial files
   fs.writeFile('wheel.json', JSON.stringify(countries))
   fs.writeFile('winners.json', '[]')
   console.log('fresh restart')

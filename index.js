@@ -10,7 +10,7 @@ const List = require('./components/list')
 // recurring draw at 11:00AM at the start of the week
 const CronJob = require('cron').CronJob
 const job = new CronJob({
-  cronTime: '00 00 10 * * 2',
+  cronTime: '00 34 12 * * 2',
   onTick: () => {
     roulette.draw()
   },

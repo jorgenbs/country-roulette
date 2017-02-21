@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rob-service
+  labels:
+    name: rob-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: rob
+      port: 80
+      targetPort: 8080
+  selector:
+    name: rob
